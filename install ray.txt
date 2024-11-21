@@ -1,0 +1,35 @@
+pip install ray -> basic ray
+
+
+PC with RTX 3080 Ti (GPU-Accelerated Ray Installation)
+
+    Install Ray:
+
+pip install ray
+
+Install CUDA and cuDNN: To leverage the GPU, install NVIDIA CUDA Toolkit and cuDNN libraries compatible with your GPU and Ray's GPU dependencies:
+
+    Download CUDA Toolkit: NVIDIA CUDA Toolkit
+    Download cuDNN: NVIDIA cuDNN
+
+Check the compatibility between your CUDA version and Python/Ray dependencies. For example:
+
+    CUDA 11.8 is compatible with most recent Python libraries.
+
+Set Up Environment Variables (optional but recommended): Add the paths for CUDA and cuDNN binaries to your environment variables:
+
+export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+
+Install Ray with GPU Support: Install libraries for GPU-accelerated machine learning, such as TensorFlow or XGBoost:
+
+pip install ray[default]
+pip install ray[rllib] ray[tune] ray[train]  # Add specific packages as needed
+
+Verify GPU Access: Test Ray with GPU support using:
+
+import ray
+ray.init()
+print(ray.available_resources())
+
+Look for entries like "GPU": 1.0 in the output.
